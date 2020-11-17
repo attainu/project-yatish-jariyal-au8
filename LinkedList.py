@@ -12,10 +12,16 @@ class Car:
         self.regNo = regNo
         self.color = color
 
+def addPadding(s, maxLength = 10):
+    if len(s) == maxLength:
+        return s
+    else:
+        remaining = maxLength - len(s)
+        return " "*(remaining//2)+s+" "*(remaining-remaining//2)
 
 #Creating LinkedList Class
 class LinkedList:
-    def __init__(self, size):
+    def __init__(self, size = 10): # default value of parking lot size
         self.size = size
         self.head = None
         self.initLinkedList()
@@ -76,6 +82,63 @@ class LinkedList:
                 print(singleNode.slotNo, singleNode.car.regNo, singleNode.car.color)
             singleNode = singleNode.next
     
+    def tabularParkingStatus(self):
+        slotNoSize = 8
+        regNoSize = 16
+        colorSize = 11
+
+        singleNode = self.head
+        print('='*slotNoSize+' '+'='*regNoSize+' '+'='*colorSize)
+        print('Slot No. Registration No. Color')
+        print('='*slotNoSize+' '+'='*regNoSize+' '+'='*colorSize)
+        while singleNode is not None:
+            if singleNode.car is not None:
+                numSpaces = slotNoSize - len(str(singleNode.slotNo))
+                print(str(singleNode.slotNo)+" "*numSpaces, end=" ")
+
+                numSpaces = regNoSize - len(singleNode.car.regNo)
+                print(singleNode.car.regNo+" "*numSpaces, end=" ")
+
+                numSpaces = regNoSize - len( singleNode.car.color)
+                print(singleNode.car.color+" "*numSpaces)
+
+                print('-'*(slotNoSize+regNoSize+colorSize+2))
+            singleNode = singleNode.next
+    
+    def nextAvailableSlot(self):
+        singleNode = self.head
+
+        while singleNode is not None:
+            if singleNode.car is None:
+                return singleNode.slotNo
+            singleNode = singleNode.next
+        return False
+
+    def visualizeParkingLot(self):
+        slotSize = 6
+        totalSize = 7*self.size-1
+        nextSlot = self.nextAvailableSlot()
+
+        print("\n"+addPadding("TOTAL SLOTS: "+str(self.size), totalSize))
+        if nextSlot:
+            print(addPadding("NEXT AVAILABLE SLOT: "+str(nextSlot), totalSize))
+        else:
+            print(addPadding("NO AVAILABLE SLOTS", totalSize))
+        print("_"*totalSize+"\n")
+
+        singleNode = self.head
+        while singleNode is not None:
+            if singleNode.car is not None:
+                print("PARKED", end=" ")
+            else:
+                print("EMPTY ", end=" ")
+            singleNode = singleNode.next
+        print()
+        for i in range(1, self.size+1):
+            print(addPadding(str(i), 6), end=" ")
+        print()
+        print("_"*(7*self.size-1))
+        print("\n")
 
     def regNoForCarWithColor(self, color):
         regNos = []

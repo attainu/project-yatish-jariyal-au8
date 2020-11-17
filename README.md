@@ -49,3 +49,15 @@ Parking Lot is a Python Project for parking cars, keeping track of registration 
         exit
     </code>
 </pre>
+
+<h3>Extra Features</h3>
+<pre>
+    <code>
+        visualize_parking_lot
+        # Shows total no of slots, next available parking slot and visualization of parking lot
+    </code>
+    <code>
+        tabular_status
+        # Shows status of all slots in a tabular format
+    </code>
+</pre>

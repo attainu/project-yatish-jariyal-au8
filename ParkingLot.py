@@ -32,6 +32,8 @@ def runCommand(command):
         size = int(splitted[1])
         createParkingLot(size)
         printParkingLot()
+    elif splitted[0] == 'tabular_status':
+        parkingLot.tabularParkingStatus()
     elif splitted[0] == 'park':
         regNo = splitted[1]
         color = splitted[2]
@@ -50,6 +52,8 @@ def runCommand(command):
     elif splitted[0] == 'slot_number_for_registration_number':
         regNo = splitted[1]
         parkingLot.slotNoForCarWithRegNo(regNo)
+    elif splitted[0] == 'visualize_parking_lot':
+        parkingLot.visualizeParkingLot()
     else:
         print('Please enter a valid command!')
 

@@ -110,8 +110,7 @@ class LinkedList:
         return False
 
     def visualizeParkingLot(self):
-        slotSize = 6
-        totalSize = 7*self.size-1
+        totalSize = 7*self.size-1 
         nextSlot = self.nextAvailableSlot()
 
         print("\n"+addPadding("TOTAL SLOTS: "+str(self.size), totalSize))

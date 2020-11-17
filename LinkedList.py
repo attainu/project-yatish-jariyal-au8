@@ -41,11 +41,6 @@ class LinkedList:
             # call add node at start
             self.addNodeAtHead(i)
     
-    # printing linked list
-    def printLinkedList(self):
-        p = self.head
-        while p is not None:
-            p = p.next
 
     def addCar(self, regNo, color):
         car = Car(regNo, color)
